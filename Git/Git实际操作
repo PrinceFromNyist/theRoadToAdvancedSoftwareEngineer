@@ -13,6 +13,7 @@
 3.向暂存区（stage或者index）中存入文件
 命令：git add
 舍弃git add-git rm --cached <file>
+舍弃修改之后的git add-git reset HEAD <file>
 
 4.保存仓库的历史记录
 命令：git commit
@@ -49,6 +50,30 @@ git diff
 2)查看工作树和最新提交的差别
 git diff HEAD
 好习惯：git commit前先git diff HEAD【这里的HEAD是指向当前分支中最后一次提交的指针】
+
+7.显示分支一览表
+命令：git branch
+备注：
+1）git branch -a，查询所有的分支，本地及远程
+
+8.创建，切换分支
+命令：git checkout -b
+备注：
+1）创建分支都有一个基础分支，比如现在我在master分支，创建了分支A，那么分支A此刻和master分支是完全一样的
+2）git checkout -b 分支名= git branch 分支名+git checkout 分支名
+3）切换到上一个分支：git checkout -
+4）主干分支与特性分支
+一般master是主干分支【一般是运行分支，随时比较稳定，随时都可以拿来做研究】
+基于master分支创建的分支为特性分支，一般特性分支是合并到主干分支上去的【一般是新功能的开发或者是bug修复，不稳定】
+
+9.合并分支
+命令：git merge
+备注：
+1）想在哪个分支下合并另一个分支，
+需要先切换到哪个分支下，然后git merge 另一个分支
+为了在历史记录中明确记录下本次分支合并，我们需要创建合并提交，因此，在合并时加上--no-ff参数
+
+
 
 
 
