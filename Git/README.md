@@ -1,4 +1,4 @@
 #Git教程
 -feature-A
 -fix-B
--featre-C
+-feature1-C
