@@ -73,6 +73,52 @@ git diff HEAD
 需要先切换到哪个分支下，然后git merge 另一个分支
 为了在历史记录中明确记录下本次分支合并，我们需要创建合并提交，因此，在合并时加上--no-ff参数
 
+10.已图表形式查看分支
+命令：git log --graph
+
+11.回溯历史版本【坐时光机回到过去，也可以回到未来】
+命令：git reset --hard 提交的哈希值
+
+12.查看所有的日志：因为git log是只能查看以当前状态为终点的历史日志
+命令：git reflog
+
+13.冲突解决
+一般在push时，解决冲突即可
+
+14.修改提交信息
+命令：git commit --amend
+备注：
+1）一般用于修改提交备注，修改后的，对应的commit点的哈希值也变化了
+
+15.压缩历史
+命令：git rebase -i
+备注：
+1）一般用于把两条提交合并为一个提交，一般用于单词拼写错误等小修改
+2）更改历史:git rebase -i HEAD~2【该命令选定当前分支中包含HEAD（最新提交）在内的两个最新历史记录为对象，并在编辑器中打开，打开后把要压缩的提交前面的pick变为fixup】
+
+16.推送至远程仓库
+步骤：
+1）在github创建一个仓库，最好和本地的仓库名一样，还有创建时不要勾选‘initialize this repository with a README’
+2)git remote add 仓库地址(添加远程仓库，一般是ssh，需要在github添加公钥，该命令会自动将远程仓库的名称设置为origin)
+3）git push -u origin master（推送至远程分支,-u参数可以在推送给的同时，将origin仓库的master分支设置为本地仓库当前分支的upstream）
+添加了这个参数，以后运行git pull命令从远程仓库获取内容时，本地仓库的这个分支就可以直接从origin的master分支获取内容，省去了另外添加参数的麻烦
+
+17.从远程仓库拉取
+命令：
+1）git clone 仓库地址（ssh版和https版的）
+2）git branch -a，可以查看远程和本地分支
+3）获取远程的某个分支
+git checkout -b 本地分支名 origin/远程分支名
+最好本地分支名和远程分支名一样【git clone后本地默认有一个master分支，和远程一致】
+4）git push
+5）git pull origin 远程分支名【最好本地当前分支和要pull的远程是一个分支】
+
+
+
+
+
+
+
 
 
 
